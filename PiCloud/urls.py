@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from .views import HomePage
 
 urlpatterns = [
 
@@ -27,4 +28,5 @@ urlpatterns = [
 
     #Normal page section
     path('file/', include('file.urls')),
+    path('', HomePage),
 ]

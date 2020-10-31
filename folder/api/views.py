@@ -35,7 +35,7 @@ class SingleFolder(APIView):
 class AllFolderInFolder(APIView):
 
     def get(self, request, pk, format=None):
-        folder = get_object_or_404(Folder, parent_id = pk) #Folder.objects.all().filter(parent_id = pk)
+        folder = Folder.objects.all().filter(parent_id = pk)
         serializer = FolderSerializer(folder, many=True)
         return Response(serializer.data)
 

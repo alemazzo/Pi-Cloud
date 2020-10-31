@@ -21,6 +21,10 @@ import os, subprocess
 
 
 
+"""
+Getter API
+"""
+
 class AllFile(APIView):
 
     def get(self, request, format=None):
@@ -43,6 +47,10 @@ class AllFileInFolder(APIView):
         return Response(serializer.data)
 
 
+
+"""
+Upload API
+"""
 class UploadFile(APIView):
 
     def getAvailablePath(self, file, folder):
@@ -51,7 +59,8 @@ class UploadFile(APIView):
         while os.path.exists(path):
             i += 1
             path = settings.DATA_PATH + folder.getPath() +  file.name + "("+str(i)+")" + '.' + file.extension
-        file.name = file.name + "("+str(i)+")"
+        if i!=-1:
+            file.name = file.name + "("+str(i)+")"
         return path
            
         
@@ -73,6 +82,9 @@ class UploadFile(APIView):
         return HttpResponse("OK")
         
 
+"""
+Delete API
+"""
 class DeleteFile(APIView):
 
     def get(self, request, pk, format=None):
@@ -81,6 +93,10 @@ class DeleteFile(APIView):
         file.delete()
         return HttpResponse("OK")
 
+
+"""
+Copy API
+"""
 class CopyFile(APIView):
 
     def getAvailablePath(self, file, folder):
