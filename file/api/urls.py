@@ -21,5 +21,9 @@ urlpatterns = [
     
     # Copy the content of the first file in the second file.
     path('copy/<int:pk>/<int:dest>', CopyFile.as_view()),
+
+    # TODO create a Rename API
+
+    # TODO create a Move API
     
 ]

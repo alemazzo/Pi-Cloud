@@ -19,22 +19,40 @@ import os, subprocess
 
 
 class AllFolder(APIView):
+    """
+    Return all folders in file system.
+    """
 
     def get(self, request, format=None):
+        """
+        Return all folders in file system.
+        """
         folder = Folder.objects.all()
         serializer = FolderSerializer(folder, many=True)
         return Response(serializer.data)
 
 class SingleFolder(APIView):
+    """
+    Return a single folder by its ID
+    """
 
     def get(self, request, pk, format=None):
+        """
+        Return a single folder by its ID
+        """
         folder = get_object_or_404(Folder, pk = pk) #Folder.objects.get(pk = pk)
         serializer = FolderSerializer(folder, many=False)
         return Response(serializer.data)
 
 class AllFolderInFolder(APIView):
+    """
+    Return all folders in a folder by its ID
+    """
 
     def get(self, request, pk, format=None):
+        """
+        Return all folders in a folder by its ID
+        """
         folder = Folder.objects.all().filter(parent_id = pk)
         serializer = FolderSerializer(folder, many=True)
         return Response(serializer.data)
@@ -42,6 +60,9 @@ class AllFolderInFolder(APIView):
 
 
 class CreateFolder(APIView):
+    """
+    Create a folder
+    """
 
     def getAvailablePath(self, folder):
         name = folder.name
@@ -63,7 +84,9 @@ class CreateFolder(APIView):
         return Response(serializer.data)
 
 class DeleteFolder(APIView):
-
+    """
+    Delete a folder
+    """
 
     def get(self, request, pk, format=None):
         folder = get_object_or_404(Folder, pk = pk)
