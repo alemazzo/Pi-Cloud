@@ -1,4 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
 
+{% include "components/navbar.html" %}
+
+<div class="d-flex align-items-stretch">
+    {% include "components/sidebar.html" %}
+    <div style="width: 100%;">
+        {% include "components/main.html" %}
+    </div>
+</div>
+
+{% include "components/footer.html" %}
+
+
 {% endblock content %}

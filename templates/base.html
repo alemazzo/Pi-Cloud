@@ -116,6 +116,15 @@
 
     {% endblock content %}
 
+    <script>
+        $(document).ready(function () {
+            StartUploadQueueListener('drop-zone', 'uploads', 1);
+            SetupFileManager('filemanager', 1);
+            openFolder(1);
+        });
+    </script>
+    <!-- JavaScript files-->
+
 </body>
 
 </html>
