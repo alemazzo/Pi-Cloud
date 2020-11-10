@@ -1,6 +1,6 @@
 from django.urls import path, include
 from django.views.decorators.csrf import csrf_exempt
-from views import *
+from folder.api.views import *
 
 urlpatterns = [
 
