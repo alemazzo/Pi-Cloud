@@ -10,6 +10,11 @@ class File(models.Model):
     folder = models.ForeignKey(Folder, on_delete = models.CASCADE)    
     extension = models.TextField(null=True)
 
+    # New Fields
+
+    size = models.IntegerField()
+    
+
     class Meta:
         verbose_name = "File"
         verbose_name_plural = "Files"

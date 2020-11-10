@@ -6,7 +6,11 @@ import shutil
 # Create your models here.
 class Folder(models.Model):
 
+    
+    # Name of the folder.
     name = models.TextField()
+
+    # The parent directory - Null if the folder is the root.
     parent = models.ForeignKey("Folder", on_delete = models.CASCADE, blank = True, null = True)
     
 
@@ -17,14 +21,28 @@ class Folder(models.Model):
     def __str__(self):
         return self.name
     
+    
     def getPath(self):
+        """
+        Get the complete path of the folder. 
+        """
         if self.parent is None:
             return self.name + '\\'
         else:
             f = Folder.objects.get(id = self.parent_id)
             return f.getPath() + self.name + '\\'
     
+    def getSize(self):
+        """
+        Get the total size of the folder.
+        """
+        # TODO 
+        pass
+
     def _delete(self):
+        """
+        Delete the folder and all its subfolders recursively.
+        """
         from file.models import File
 
         subfolders = Folder.objects.all().filter(parent_id = self.id)
