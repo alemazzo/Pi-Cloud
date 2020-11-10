@@ -6,4 +6,4 @@ class FolderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Folder
-        fields = ['pk', 'name', 'parent_id']
+        fields = ['__all__']

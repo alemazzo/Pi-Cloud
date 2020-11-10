@@ -16,7 +16,7 @@ class File(models.Model):
     folder = models.ForeignKey(Folder, on_delete = models.CASCADE)
 
     # If True the file is Trashed and it will be visibile only in Trash
-    trashed = models.BooleanField()    
+    trashed = models.BooleanField(default=False)    
 
 
     # New Fields
@@ -32,7 +32,7 @@ class File(models.Model):
     def __str__(self):
         return self.name + self.extension
 
-    def _trash(self):
+    def trash(self):
         """
         Sent the file to Trash
         """

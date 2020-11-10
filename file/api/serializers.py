@@ -6,4 +6,4 @@ class FileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = File
-        fields = ['pk', 'name', 'extension', 'folder_id']
+        fields = ['__all__']

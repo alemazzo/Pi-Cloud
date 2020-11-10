@@ -26,22 +26,41 @@ Getter API
 """
 
 class AllFile(APIView):
+    """
+    Return all files in file system.
+    """
 
     def get(self, request, format=None):
+        """
+        Return all files in file system.
+        """
         files = File.objects.all()
         serializer = FileSerializer(files, many=True)
         return Response(serializer.data)
 
 class SingleFile(APIView):
+    """
+    Return a single file with the specified ID
+    """
 
     def get(self, request, pk, format=None):
-        files = get_object_or_404(File, pk = pk) #File.objects.get(pk = pk)
+        """
+        Return a single file with the specified ID
+        """
+
+        files = get_object_or_404(File, pk = pk)
         serializer = FileSerializer(files, many=False)
         return Response(serializer.data)
 
 class AllFileInFolder(APIView):
+    """
+    Return all files in folder the specified ID
+    """
 
     def get(self, request, pk, format=None):
+        """
+        Return all files in folder the specified ID
+        """
         files = File.objects.all().filter(folder_id = pk)
         serializer = FileSerializer(files, many=True)
         return Response(serializer.data)
@@ -50,6 +69,7 @@ class AllFileInFolder(APIView):
 
 """
 Upload API
+TODO da rivedere l'implementazione
 """
 class UploadFile(APIView):
 
@@ -85,8 +105,20 @@ class UploadFile(APIView):
 """
 Delete API
 """
-class DeleteFile(APIView):
 
+class TrashFile(APIView):
+    """
+    Trash a file with the specified ID
+    """
+    def get(self, request, pk, format=None):
+        file = get_object_or_404(File, pk = pk) #File.objects.get(pk = pk)
+        file.trash()
+        return HttpResponse("OK")
+
+class DeleteFile(APIView):
+    """
+    Delete a file with the specified ID
+    """
     def get(self, request, pk, format=None):
         file = get_object_or_404(File, pk = pk) #File.objects.get(pk = pk)
         file._delete()
@@ -98,6 +130,9 @@ class DeleteFile(APIView):
 Copy API
 """
 class CopyFile(APIView):
+    """
+    Copy the content of the first file in the second file.
+    """
 
     def getAvailablePath(self, file, folder):
         path = settings.DATA_PATH + folder.getPath() + file.name + '.' + file.extension
@@ -110,6 +145,11 @@ class CopyFile(APIView):
         return path
 
     def get(self, request, pk, dest, format=None):
+        """
+        Copy the content of the first file in the second file.
+        """
+
+        # TODO riguardare l'implementazione
         file = get_object_or_404(File, pk = pk) #File.objects.get(pk = pk)
         folder = Folder.objects.get(pk = file.folder_id)
         path = settings.DATA_PATH + folder.getPath() +  file.name + '.' + file.extension
