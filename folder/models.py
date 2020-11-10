@@ -3,6 +3,7 @@ from django.conf import settings
 
 import shutil
 
+
 # Create your models here.
 class Folder(models.Model):
 
@@ -13,7 +14,6 @@ class Folder(models.Model):
     # The parent directory - Null if the folder is the root.
     parent = models.ForeignKey("Folder", on_delete = models.CASCADE, blank = True, null = True)
     
-
     class Meta:
         verbose_name = "Folder"
         verbose_name_plural = "Folders"
@@ -27,8 +27,10 @@ class Folder(models.Model):
         Get the complete path of the folder. 
         """
         if self.parent is None:
+            # If the folder is the root we only have to return its name.
             return self.name + '\\'
         else:
+            # Otherwise, we concat the path of the parent Folder with the name of the folder.
             f = Folder.objects.get(id = self.parent_id)
             return f.getPath() + self.name + '\\'
     
@@ -43,8 +45,8 @@ class Folder(models.Model):
         """
         Delete the folder and all its subfolders recursively.
         """
+        #Internal import because of -Circul Import Error-
         from file.models import File
-
         subfolders = Folder.objects.all().filter(parent_id = self.id)
         if(len(subfolders) > 0):
             for folder in subfolders:
