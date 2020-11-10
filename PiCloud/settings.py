@@ -108,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'it-it'
 
 TIME_ZONE = 'UTC'
 
@@ -132,4 +132,4 @@ STATICFILES_DIRS = (
   os.path.join(BASE_DIR, 'static/'),
 )
 
-DATA_PATH = 'C:\\Users\\alema\\Desktop\\Pi-Cloud\\data\\' #This will be the HDD connected to Rpi
+DATA_PATH = '' #This will be the HDD connected to Rpi
