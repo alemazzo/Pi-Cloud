@@ -21,7 +21,7 @@ class File(models.Model):
 
     # New Fields
 
-    # The size of the file in Byte
+    # The size of the file in Bytes
     size = models.IntegerField()
 
 
