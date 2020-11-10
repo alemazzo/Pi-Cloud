@@ -28,11 +28,11 @@ class Folder(models.Model):
         """
         if self.parent is None:
             # If the folder is the root we only have to return its name.
-            return self.name + '\\'
+            return self.name + '/'
         else:
             # Otherwise, we concat the path of the parent Folder with the name of the folder.
             f = Folder.objects.get(id = self.parent_id)
-            return f.getPath() + self.name + '\\'
+            return f.getPath() + self.name + '/'
     
     def getSize(self):
         """
