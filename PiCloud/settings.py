@@ -132,4 +132,4 @@ STATICFILES_DIRS = (
   os.path.join(BASE_DIR, 'static/'),
 )
 
-DATA_PATH = '' #This will be the HDD connected to Rpi
+DATA_PATH = BASE_DIR + '/data/' #This will be the HDD connected to Rpi
