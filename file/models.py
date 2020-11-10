@@ -3,7 +3,6 @@ from folder.models import Folder
 from django.conf import settings
 
 import os
-# Create your models here.
 
 class File(models.Model):
 
