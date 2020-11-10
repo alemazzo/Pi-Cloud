@@ -26,7 +26,5 @@ urlpatterns = [
     path('api/file/', include('file.api.urls')),
     path('api/folder/', include('folder.api.urls')),
 
-    #Normal page section
-    path('file/', include('file.urls')),
     path('', HomePage),
 ]

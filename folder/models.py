@@ -32,6 +32,7 @@ class Folder(models.Model):
             for folder in subfolders:
                 folder._delete()
                 folder.delete()
+                
         files = File.objects.all().filter(folder_id = self.id)
         if(len(files) > 0):
             for f in files:
