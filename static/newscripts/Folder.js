@@ -3,10 +3,12 @@ class MyFolder {
     // Fields
     id;
     name;
+    parentId;
 
-    constructor(id, name) {
+    constructor(id, name, parentId) {
         this.id = id;
         this.name = name;
+        this.parentId = parentId;
     }
 
     // *** Getters *** //
