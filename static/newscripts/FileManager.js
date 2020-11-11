@@ -23,7 +23,9 @@ class FileManager {
         this.rootFolder = null;
     }
 
-    openFolder() {
+    openFolder(folderId) {
+        $.get(Api.getFolderByIdUrl(folderId), function (res) {
 
+        });
     }
 }
