@@ -5,6 +5,9 @@ FILE_IN_FOLDER_URL = '/api/file/in_folder/'
 FILEMANAGER_DIV = '';
 ACTUAL_FOLDER = 1;
 
+FILES = [];
+
+
 
 function openFolder(id) {
 

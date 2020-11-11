@@ -10,6 +10,17 @@ class UIElement {
         this.size = size;
     }
 
+    _renderName() {
+        return `${this.name}`;
+    }
+
+    _renderSize() {
+        if (Size.getSize(size, Size.GIGABYTES) >= 1) return `${Size.getSize(size, Size.GIGABYTES)} GB`
+        if (Size.getSize(size, Size.MEGABYTES) >= 1) return `${Size.getSize(size, Size.MEGABYTES)} MB`
+        if (Size.getSize(size, Size.KILOBYTES) >= 1) return `${Size.getSize(size, Size.KILOBYTES)} KB`
+        return `${Size.getSize(size, Size.BYTES)} B`
+    }
+
     render() {
         return `
             <div class="item-div col-xl-3 col-lg-6 mb-4 mb-xl-0"
@@ -22,8 +33,8 @@ class UIElement {
                         <div class="dot mr-3 bg-secondary"></div>
 
                         <div class="mytext">
-                            <p class="truncate">' + item.name + '</p>
-                            <span class="text-gray">${this.size}</span>
+                            <p class="truncate">${this._renderName()}</p>
+                            <span class="text-gray">${this._renderSize()}</span>
                         </div>
 
                     </div>
@@ -34,15 +45,5 @@ class UIElement {
 
             </div>
             `
-    }
-}
-
-class FileUIElement extends UIElement {
-
-    static ICON = "fas fa-file";
-
-    constructor(file) {
-        if (file.getSize(Size.MEGABYTES))
-            super(file.name, FileUIElement.ICON, file.getSize());
     }
 }
