@@ -15,10 +15,10 @@ class UIElement {
     }
 
     _renderSize() {
-        if (Size.getSize(size, Size.GIGABYTES) >= 1) return `${Size.getSize(size, Size.GIGABYTES)} GB`
-        if (Size.getSize(size, Size.MEGABYTES) >= 1) return `${Size.getSize(size, Size.MEGABYTES)} MB`
-        if (Size.getSize(size, Size.KILOBYTES) >= 1) return `${Size.getSize(size, Size.KILOBYTES)} KB`
-        return `${Size.getSize(size, Size.BYTES)} B`
+        if (Size.getSize(this.size, Size.GIGABYTES) >= 1) return `${Size.getSize(this.size, Size.GIGABYTES)} GB`
+        if (Size.getSize(this.size, Size.MEGABYTES) >= 1) return `${Size.getSize(this.size, Size.MEGABYTES)} MB`
+        if (Size.getSize(this.size, Size.KILOBYTES) >= 1) return `${Size.getSize(this.size, Size.KILOBYTES)} KB`
+        return `${Size.getSize(this.size, Size.BYTES)} B`
     }
 
     render() {
