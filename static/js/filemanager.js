@@ -12,7 +12,7 @@ function openFolder(id) {
 
     $("#" + FILEMANAGER_DIV).html("");
 
-    $.get(FOLDER_URL + id, function(res) {
+    $.get(FOLDER_URL + id, function (res) {
         if (res.parent_id != null) {
             const item = {
                 'id': res.parent_id,
@@ -22,7 +22,7 @@ function openFolder(id) {
             var el = CreateElementDiv(item, false);
             $("#" + FILEMANAGER_DIV).append(el);
         }
-        $.get(FOLDER_IN_FOLDER_URL + id, function(res) {
+        $.get(FOLDER_IN_FOLDER_URL + id, function (res) {
             for (var i = 0; i < res.length; i++) {
                 const item = {
                     'id': res[i].pk,
@@ -33,7 +33,7 @@ function openFolder(id) {
                 $("#" + FILEMANAGER_DIV).append(el);
 
             }
-            $.get(FILE_IN_FOLDER_URL + id, function(res) {
+            $.get(FILE_IN_FOLDER_URL + id, function (res) {
                 for (var i = 0; i < res.length; i++) {
                     const item = {
                         'id': res[i].pk,
