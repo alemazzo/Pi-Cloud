@@ -41,16 +41,21 @@
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
     <script src="{% static 'js/charts-home.js' %}"></script>
     <script src="{% static 'js/front.js' %}"></script>
-    <script src="{% static 'js/upload.js' %}"></script>
+
+    <!--<script src="{% static 'js/upload.js' %}"></script>-->
 
     <script src="{% static 'newscripts/Api.js' %}"></script>
-    <script src="{% static 'newscripts/Size.js' %}"></script>
-    <script src="{% static 'newscripts/UIElement.js' %}"></script>
-    <script src="{% static 'newscripts/FileUIElement.js' %}"></script>
-    <script src="{% static 'newscripts/FolderUIElement.js' %}"></script>
-    <script src="{% static 'newscripts/Files.js' %}"></script>
-    <script src="{% static 'newscripts/Folder.js' %}"></script>
-    <script src="{% static 'newscripts/NewFileManager.js' %}"></script>
+
+    <script src="{% static 'newscripts/Ui/UIElement.js' %}"></script>
+    <script src="{% static 'newscripts/Ui/FileUIElement.js' %}"></script>
+    <script src="{% static 'newscripts/Ui/FolderUIElement.js' %}"></script>
+
+    <script src="{% static 'newscripts/Structure/Size.js' %}"></script>
+    <script src="{% static 'newscripts/Structure/File.js' %}"></script>
+    <script src="{% static 'newscripts/Structure/Folder.js' %}"></script>
+
+    <script src="{% static 'newscripts/FileManager.js' %}"></script>
+    <script src="{% static 'newscripts/UploadManager.js' %}"></script>
 
     <style>
         #uploads {
@@ -125,12 +130,14 @@
     {% endblock content %}
 
     <script>
+
         $(document).ready(function () {
-            StartUploadQueueListener('drop-zone', 'uploads');
+            // StartUploadQueueListener('drop-zone', 'uploads');
+            UploadManager.start('drop-zone');
             FileManager.start('filemanager');
         });
+
     </script>
-    <!-- JavaScript files-->
 
 </body>
 

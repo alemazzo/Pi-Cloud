@@ -41,7 +41,7 @@ class UIElement {
 
                     </div>
 
-                    <div class="icon text-white bg-secondary"><i class="${this.icon}}"></i></div>
+                    <div class="icon text-white bg-secondary"><i class="${this.icon}"></i></div>
                 
                 </div>
 

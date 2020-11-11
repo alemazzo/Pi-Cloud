@@ -7,11 +7,13 @@ class MyFile {
     name;
     extension;
     size;
+    folder;
 
-    constructor(id, name, size) {
+    constructor(id, name, size, folder) {
         this.id = id;
         this.name = name;
         this.size = size;
+        this.folder = folder;
     }
     /*
     constructor(name, extension, size) {

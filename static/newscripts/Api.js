@@ -2,7 +2,8 @@ class Api {
 
     static FOLDERS = '/api/folder/'
     static FOLDERS_IN_FOLDER = '/api/folder/in_folder/';
-    static FILES_IN_FOLDER = '/api/file/in_folder/'
+    static FILES_IN_FOLDER = '/api/file/in_folder/';
+    static UPLOAD_FILE = '/api/file/upload/';
 
     static getFolderByIdUrl(folderId) {
         return Api.FOLDERS + folderId;
@@ -14,6 +15,10 @@ class Api {
 
     static getFilesInFolderByIdUrl(folderId) {
         return Api.FILES_IN_FOLDER + folderId;
+    }
+
+    static getUploadFileUrl() {
+        return Api.UPLOAD_FILE;
     }
 
 }
