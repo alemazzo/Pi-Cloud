@@ -24,7 +24,7 @@ class UIElement {
     render() {
         return `
             <div class="item-div col-xl-3 col-lg-6 mb-4 mb-xl-0"
-                onclick="openFile(' + item.id + ');">
+                onclick="">
 
                 <div class="item bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
                     

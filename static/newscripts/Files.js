@@ -3,11 +3,13 @@
 class MyFile {
 
     // Fields
+    id;
     name;
     extension;
     size;
 
-    constructor(name, size) {
+    constructor(id, name, size) {
+        this.id = id;
         this.name = name;
         this.size = size;
     }

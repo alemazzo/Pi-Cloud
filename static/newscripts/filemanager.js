@@ -65,9 +65,9 @@ function openFolder(id) {
 
 function CreateElementDiv(item, isfile) {
     if (!isfile)
-        return new FolderUIElement(new MyFolder(item.name)).render();
+        return new FolderUIElement(new MyFolder(item.id, item.name)).render();
     else
-        return new FileUIElement(new MyFile(item.name, item.size)).render();
+        return new FileUIElement(new MyFile(item.id, item.name, item.size)).render();
 }
 
 
