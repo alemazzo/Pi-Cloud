@@ -1,17 +1,29 @@
 
 class FileManager {
 
+    // HTML Container
+    container;
+
+    rootFolder;
     actualFolder;
     parentFolder;
 
     files = [];
     subfolders = []
 
-    constructor() {
 
+    constructor(container) {
+        this.container = container;
+        this.getRootFolder();
+        this.actualFolder = this.rootFolder;
     }
 
-    changeFolder() {
+    getRootFolder() {
+        // TODO implement
+        this.rootFolder = null;
+    }
+
+    openFolder() {
 
     }
 }
