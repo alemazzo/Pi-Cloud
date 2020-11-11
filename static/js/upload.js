@@ -1,7 +1,6 @@
 const UPLOAD_FILE_URL = '/api/file/upload/';
 var UPLOAD_QUEUE = [];
 var UPLOADING = false;
-var FOLDER = null;
 var UPLOAD_DIV;
 
 
@@ -41,10 +40,10 @@ function uploadFile(item) {
     form_data.append('folder', item.folder);
     form_data.append('csrfmiddlewaretoken', getCookie('csrftoken'));
     $.ajax({
-        xhr: function() {
+        xhr: function () {
             var xhr = new window.XMLHttpRequest();
 
-            xhr.upload.addEventListener("progress", function(evt) {
+            xhr.upload.addEventListener("progress", function (evt) {
                 if (evt.lengthComputable) {
                     var percentComplete = evt.loaded / evt.total;
                     percentComplete = parseInt(percentComplete * 100);
@@ -65,15 +64,15 @@ function uploadFile(item) {
         data: form_data,
         processData: false,
         contentType: false,
-        success: function(result) {
+        success: function (result) {
             UPLOADING = false;
             $("#" + item.id + "-progress").html("Completed");
             $("#" + item.id + "-progress").removeClass('progress-bar-animated');
             setTimeout(UploadQueueProcess, 100);
             if (UPLOAD_QUEUE.length == 0)
-                openFolder(FOLDER)
+                FileManager.openFolder(FileManager.actualFolder.id);
         },
-        error: function(err) {
+        error: function (err) {
             $("#" + item.id + "-progress").html("Error");
             $("#" + item.id + "-progress").removeClass('progress-bar-animated');
         }
@@ -91,11 +90,11 @@ function UploadQueueProcess() {
     }
 }
 
-function addFileToUploadQueue(file, folder, onprogress = function() {}, onfinished = function() {}) {
+function addFileToUploadQueue(file, onprogress = function () { }, onfinished = function () { }) {
     const item = {
         'id': randomString(10),
         'file': file,
-        'folder': folder,
+        'folder': FileManager.actualFolder.id,
         'onprogress': onprogress,
         'onfinished': onfinished
     }
@@ -103,9 +102,6 @@ function addFileToUploadQueue(file, folder, onprogress = function() {}, onfinish
     UPLOAD_QUEUE.push(item);
 }
 
-function updateUploadFolder(folder) {
-    FOLDER = folder;
-}
 
 
 function createUploadListItem(file) {
@@ -129,27 +125,26 @@ function addUploadToDivList(file) {
     $("#" + UPLOAD_DIV).append(createUploadListItem(file));
 }
 
-function StartUploadQueueListener(dropzoneId, uploadDivId, folder) {
+function StartUploadQueueListener(dropzoneId, uploadDivId) {
     UPLOAD_DIV = uploadDivId;
-    updateUploadFolder(folder);
     setTimeout(UploadQueueProcess, 500);
 
     var dropZone = document.getElementById(dropzoneId);
 
-    dropZone.ondrop = function(e) {
+    dropZone.ondrop = function (e) {
         e.preventDefault();
         this.className = 'upload-drop-zone';
         $("#uploads-dropdown").click();
         for (let index = 0; index < e.dataTransfer.files.length; index++) {
-            addFileToUploadQueue(e.dataTransfer.files[index], FOLDER);
+            addFileToUploadQueue(e.dataTransfer.files[index]);
         }
     }
 
-    dropZone.ondragover = function() {
+    dropZone.ondragover = function () {
         return false;
     }
 
-    dropZone.ondragleave = function() {
+    dropZone.ondragleave = function () {
         return false;
     }
 }

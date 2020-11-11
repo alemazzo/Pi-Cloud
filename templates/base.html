@@ -49,7 +49,9 @@
     <script src="{% static 'newscripts/FileUIElement.js' %}"></script>
     <script src="{% static 'newscripts/FolderUIElement.js' %}"></script>
     <script src="{% static 'newscripts/Files.js' %}"></script>
-    <script src="{% static 'newscripts/filemanager.js' %}"></script>
+    <script src="{% static 'newscripts/Folder.js' %}"></script>
+    <script src="{% static 'newscripts/NewFileManager.js' %}"></script>
+    <!--<script src="{% static 'newscripts/filemanager.js' %}"></script>-->
 
     <style>
         #uploads {
@@ -125,9 +127,8 @@
 
     <script>
         $(document).ready(function () {
-            StartUploadQueueListener('drop-zone', 'uploads', 1);
-            SetupFileManager('filemanager', 1);
-            openFolder(1);
+            StartUploadQueueListener('drop-zone', 'uploads');
+            FileManager.start('filemanager');
         });
     </script>
     <!-- JavaScript files-->

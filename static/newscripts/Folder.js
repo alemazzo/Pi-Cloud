@@ -20,6 +20,6 @@ class MyFolder {
     // *** Call to render *** //
 
     render() {
-        return FolderUIElement(this).render();
+        return new FolderUIElement(this).render();
     }
 };

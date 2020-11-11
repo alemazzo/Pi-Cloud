@@ -3,11 +3,13 @@ class UIElement {
     name;
     icon;
     size;
+    action;
 
-    constructor(name, icon, size) {
+    constructor(name, icon, size, action) {
         this.name = name;
         this.icon = icon;
         this.size = size;
+        this.action = action;
     }
 
     _renderName() {
@@ -24,7 +26,7 @@ class UIElement {
     render() {
         return `
             <div class="item-div col-xl-3 col-lg-6 mb-4 mb-xl-0"
-                onclick="">
+                onclick="${this.action}">
 
                 <div class="item bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
                     

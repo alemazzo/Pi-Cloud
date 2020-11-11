@@ -38,6 +38,6 @@ class MyFile {
     // *** Call to render *** //
 
     render() {
-        return FileUIElement(this).render();
+        return new FileUIElement(this).render();
     }
 };

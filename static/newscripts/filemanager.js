@@ -3,7 +3,6 @@ FOLDER_URL = '/api/folder/'
 
 FILE_IN_FOLDER_URL = '/api/file/in_folder/'
 FILEMANAGER_DIV = '';
-ACTUAL_FOLDER = 1;
 
 FILES = [];
 
@@ -72,13 +71,4 @@ function CreateElementDiv(item, isfile) {
 
 
 
-function UpdateActualFolder(actualfolder) {
-    ACTUAL_FOLDER = actualfolder;
-    updateUploadFolder(actualfolder);
-}
-
-function SetupFileManager(filemanagerdivId, actualfolder) {
-    FILEMANAGER_DIV = filemanagerdivId;
-    UpdateActualFolder(actualfolder);
-}
 
